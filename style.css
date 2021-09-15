@@ -143,5 +143,31 @@ section .content-box .form-box .logo img{
 	width: 20%;
 	justify-content: center;
 	align-items: center;
-  	flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+/*PROFILE*/
+.sampul
+{
+	background: url(images/bg-profil.png) 50% 50% no-repeat;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-top: 0px;
+}
+.profile-image-content
+{
+	object-fit: cover 50% 50% no-repeat; 
+	width:150px; 
+	height:150px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.user-dropdown
+{
+	border-bottom: 5px;
+}
+.dropdown-item a
+{
+	text-decoration: none;
+	color: #000;
 }
