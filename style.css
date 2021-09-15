@@ -153,14 +153,13 @@ section .content-box .form-box .logo img{
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  margin-top: 0px;
 }
 .profile-image-content
 {
 	object-fit: cover 50% 50% no-repeat; 
 	width:150px; 
 	height:150px;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+/*	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
 }
 .user-dropdown
 {
@@ -170,4 +169,14 @@ section .content-box .form-box .logo img{
 {
 	text-decoration: none;
 	color: #000;
+}
+.nav-item-black a 
+{
+	color: #000;
+}
+
+.card-img-top 
+{
+	object-fit: cover 50% 50% no-repeat; 
+	height:150px;
 }
