@@ -180,3 +180,20 @@ section .content-box .form-box .logo img{
 	object-fit: cover 50% 50% no-repeat; 
 	height:150px;
 }
+
+@media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
+  .navbar-expand-md .navbar-nav .nav-link 
+  {
+    padding-right: 18px;
+		padding-left: 18px;
+	}
+	.content-cari
+	{
+		padding-left: 150px;
+		padding-right: 150px;
+		padding-top: 50px;
+	}
+}
