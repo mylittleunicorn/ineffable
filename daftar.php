@@ -1,3 +1,23 @@
+<?php
+  include "db/koneksi.php";
+  if (isset($_POST["daftar"])) {
+    $username = $_POST['username'];
+    $email    = $_POST['email'];
+    $password = $_POST['password'];
+
+    $daftar   = mysqli_query($koneksi, "INSERT INTO tb_user VALUES ('', '', '$username', '$email', '$password', '')");
+    if ($daftar) {
+      echo ("<SCRIPT LANGUAGE='JavaScript'>
+          window.alert('Pendaftaran Berhasil, Klik OK untuk Login')
+      window.location.href='login.html';
+    </SCRIPT>");
+    }else{
+      echo "gagal";
+    }
+  }
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,19 +37,19 @@
 						<h2>Daftar</h2>
 					</center>
 				</div>
-				<form action="login.html">
+				<form action="" method="post">
 					<div class="input-box">
 						<span>Nama Pengguna</span>
-						<input type="text" name="">
+						<input type="text" name="username">
 					</div>
 					<div class="input-box">
 						<span>Email</span>
-						<input type="text" name="">
+						<input type="text" name="email">
 					</div>
 
 					<div class="input-box">
 						<span>Kata sandi</span>
-						<input type="password" name="">
+						<input type="password" name="password">
 					</div>
 
 					<div class="remember">
@@ -37,7 +57,7 @@
 					</div>
 
 					<div class="input-box">
-						<input type="submit" value="Daftar" name="" href="login.html">
+						<input type="submit" value="Daftar" name="daftar">
 					</div>
 
 					<div class="input-box">
