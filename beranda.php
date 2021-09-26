@@ -170,7 +170,7 @@
 
   <div class="post-popular ">
     <div class="heading">
-      <h3>Cerita Pilihan untuk Kamu</h3>
+      <h3>Cerita Terbaru untuk Kamu</h3>
     </div>
     <div class="content row">
       <?php
@@ -179,7 +179,7 @@
       ?>
       <div class="col-md-2 p-md-2">
         <div class="cover">
-          <a href="/story/158370598">
+          <a href="detail.php?id=<?php echo $d['id'] ?>">
             <img src="images/<?php echo $d['photo'] ?>" alt="Kisah Anak SMK cover" height="300">
           </a>
         </div>

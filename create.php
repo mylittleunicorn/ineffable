@@ -102,7 +102,7 @@ include "db/koneksi.php";
             </div>
             <div class="mb-3">
               <label for="exampleFormControlTextarea1" class="form-label">Tulis Ceritamu</label>
-              <textarea class="form-control" id="mytextarea" placeholder="Tulis disini..." rows="25" name="isi"></textarea>
+              <textarea class="form-control" id="" placeholder="Tulis disini..." rows="25" name="isi"></textarea>
             </div>
           </div>
           <div class="col-md-4 d-flex  justify-content-center pt-md-5">

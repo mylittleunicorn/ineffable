@@ -197,3 +197,7 @@ section .content-box .form-box .logo img{
 		padding-top: 50px;
 	}
 }
+.right-detail-content .right-title hr 
+{
+	margin-bottom: 22px;
+}
