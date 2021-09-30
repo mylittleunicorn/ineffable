@@ -7,12 +7,11 @@ include "db/koneksi.php";
     $namaFile       = $_FILES['sampul']['name'];
     $namaSementara  = $_FILES['sampul']['tmp_name'];
     move_uploaded_file($namaSementara, 'images/'.$namaFile);
-    $add = mysqli_query($koneksi, "INSERT INTO tb_post VALUES ('', '$judul', '$kategori', '$namaFile','$isi', '', 'publis', '')");
+    $add = mysqli_query($koneksi, "INSERT INTO tb_post VALUES ('', '$judul', '$kategori', '$namaFile','$isi', '', '')");
     if ($add) {
-      echo ("<script LANGUAGE='JavaScript'>
-      window.alert('Berhasil Di Publish');
-      window.location.href='beranda.php?beranda=profile&profile=cerita';
-      </script>");
+      echo "berhasil";
+    }else{
+      echo "gagal";
     }
   }
   if (isset($_POST['arsip'])) {
@@ -22,12 +21,11 @@ include "db/koneksi.php";
     $namaFile       = $_FILES['sampul']['name'];
     $namaSementara  = $_FILES['sampul']['tmp_name'];
     move_uploaded_file($namaSementara, 'images/'.$namaFile);
-    $add = mysqli_query($koneksi, "INSERT INTO tb_post VALUES ('', '$judul', '$kategori', '$namaFile','$isi', '', 'arsip', '')");
+    $add = mysqli_query($koneksi, "INSERT INTO tb_post VALUES ('', '$judul', '$kategori', '$namaFile','$isi', '', '')");
     if ($add) {
-      echo ("<script LANGUAGE='JavaScript'>
-      window.alert('Berhasil Diarsipkan');
-      window.location.href='beranda.php?beranda=profile&profile=cerita';
-      </script>");
+      echo "berhasil";
+    }else{
+      echo "gagal";
     }
   }
 ?>
@@ -68,36 +66,41 @@ include "db/koneksi.php";
 <body>
 
   
-
+  <?php
+    $id = $_GET['id'];
+    $query = mysqli_query($koneksi,"SELECT * FROM tb_post where id='$id'");
+    while ($a = mysqli_fetch_array($query)){
+  ?>
     <div class="container">
       <form action="" method="post" enctype="multipart/form-data">
         <div class="row">
           <div class="col-md-8 pt-md-5">
             <div class="mb-3">
               <label for="exampleFormControlInput1" class="form-label">Judul</label>
-              <input type="text" class="form-control" id="exampleFormControlInput1" name="judul">
+              <input type="text" class="form-control" id="exampleFormControlInput1" name="judul" value="<?php echo $a['judul'] ?>">
+              <input type="hidden" class="form-control" id="exampleFormControlInput1" name="judul">
             </div>
             <div class="mb-3">
               <label for="exampleFormControlInput1" class="form-label">Kategori</label>
               <select class="form-control" id="exampleFormControlSelect1" name="kategori">
-                <option>Puisi</option>
-                <option>Qoutes</option>
-                <option>Cerpen</option>
-                <option>Novel</option>
+                <option value="Puisi" <?php if($a['kategori']=="Puisi") echo 'selected="selected"';?>>Puisi</option>
+                <option value="Qoutes" <?php if($a['kategori']=="Qoutes") echo 'selected="selected"';?>>Qoutes</option>
+                <option value="Cerpen" <?php if($a['kategori']=="Cerpen") echo 'selected="selected"';?>>Cerpen</option>
+                <option value="Novel" <?php if($a['kategori']=="Novel") echo 'selected="selected"';?>>Novel</option>
               </select>
             </div>
             <div class="mb-3">
               <label for="exampleFormControlTextarea1" class="form-label">Tulis Ceritamu</label>
-              <textarea class="form-control" id="" placeholder="Tulis disini..." rows="25" name="isi"></textarea>
+              <textarea class="form-control" id="" placeholder="Tulis disini..." rows="25" name="isi" value=""><?php echo $a['isi'] ?></textarea>
             </div>
           </div>
           <div class="col-md-4 d-flex  justify-content-center pt-md-5">
             <div class="card p-md-5 " style="width:225px; height: 300px;">
               <div class="input-group text-center">
                 <div class="image-upload">
-                  <img src="images/add_a_photo_black_48dp.svg" style="width:90%; opacity: 0.4;" onClick="triggerClick()" id="profileDisplay">
+                  <img src="images/<?php echo $a['photo'] ?>" style="width:90%; opacity: 0.4;" onClick="triggerClick()" id="profileDisplay">
                   <label for="file-input" style="font-size: 12px;">Silahkan pilih cover</label>
-                  <input type="file" name="sampul" onChange="displayImage(this)" id="profileImage" style="display: none;" />
+                  <input type="file" name="sampul" onChange="displayImage(this)" id="profileImage"/>
                 </div>
               </div>
             </div>
@@ -113,6 +116,9 @@ include "db/koneksi.php";
         </div>
       </form>
     </div>
+    <?php
+      }
+    ?>
 
   <!-- BOOSTRAP -->
   <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"

@@ -6,7 +6,9 @@
 <html>
 <head>
   <title></title>
+  
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="style.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <style type="text/css">
@@ -79,6 +81,33 @@
       margin-top: 18px;
       margin-bottom: 18px;
     }
+
+
+    .middle {
+    width: 100%;
+    transition: .5s ease;
+    opacity: 0;
+    top: 40%;
+    position: absolute;
+    text-align: center;
+  }
+
+.datatab:hover .image {
+  opacity: 1;
+}
+
+.datatab:hover .middle {
+  opacity: 1;
+}
+
+.text {
+  background-color: #f2f2f2;
+  color: black;
+  font-size: 12px;
+  padding: 8px;
+  margin: 5px;
+  box-shadow: 5px #000;
+}
   </style>
 </head>
 <body>
@@ -86,7 +115,7 @@
   <nav class="navbar navbar-expand-md navbar-light bg-light">
     <div class="container">
       <img src="images/ine-logo.png" alt="" width="30" height="30" class="d-inline-block align-text-top">
-      <font size="5" font="center">Ineffable</font>
+      <font size="5" font="center"><a href="beranda.php">Ineffable</a></font>
       <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNavbar">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -108,18 +137,18 @@
               Menulis
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li class="dropdown-item" href="#">Buat Cerita Baru</li>
-              <li class="dropdown-item" href="#">Cerita Saya</li>
+              <a href="beranda.php?beranda=create"><li class="dropdown-item" >Buat Cerita Baru</li></a>
+              <a href="beranda.php?beranda=profile&profile=cerita"><li class="dropdown-item">Cerita Saya</li></a>
             </ul>
           </li>
           <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <img src="images/yamato.jpg" class="profile-image rounded-circle" style="object-fit: cover 50% 50% no-repeat; width:30px; height:30px; border: 1px solid #000; margin-left: 10px;"><span class="caret" style="margin-left: 10px;">Resa Amanda</span></a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li class="dropdown-item"><a href="#"></i>Profil saya</a></li>
+                  <li class="dropdown-item"><a href="beranda.php?beranda=profile&profile=cerita"></i>Profil saya</a></li>
                   <li class="dropdown-divider"></li>
                   <li class="dropdown-item"><a href="#">Kotak masuk</a></li>
-                  <li class="dropdown-item"><a href="#">Perpustakaan</a></li>
+                  <li class="dropdown-item"><a href="beranda.php?beranda=profile&profile=perpustakaan">Perpustakaan</a></li>
                   <li class="dropdown-item"><a href="#">Notifikasi</a></li>
                   <li class="dropdown-divider"></li>
                   <li class="dropdown-item"><a href="login.html"><i class="fa fa-sign-out"></i>Keluar</a></li>
@@ -130,180 +159,48 @@
     </div>
   </nav>
   <div class="container p-md-4">
-  <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active" data-bs-interval="1500">
-        <h2>Semua misteri terungkap!</h2>
-        <p>Nonton semua episode-nya sekarang!</p>
-        <img src="images/my-silly-wife_hfc_desktop.jpg" class="d-block w-100" alt="..." style="border-radius: 16px; ">
-      </div>
-      <div class="carousel-item" data-bs-interval="1500">
-        <h2>Semua misteri terungkap!</h2>
-        <p>Nonton semua episode-nya sekarang!</p>
-        <img src="images/denial_hfc_desktop.jpg" class="d-block w-100" alt="..." style="border-radius: 16px;">
-      </div>
-      <div class="carousel-item" data-bs-interval="1500">
-        <h2>Semua misteri terungkap!</h2>
-        <p>Nonton semua episode-nya sekarang!</p>
-        <img src="images/lwmk_hfc_desktop.png" class="d-block w-100" alt="..." style="border-radius: 16px;">
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
-
-  <div class="greeting-and-content-settings">
-    <div class="module-content">
-      <div class="greeting">
-        <h2 class="greeting-text">Selamat datang, abd_dahdah!</h2>
-      </div>
-    </div>
-    <hr class="module-divider">
-  </div>
-
-
-  <div class="post-popular ">
-    <div class="heading">
-      <h3>Cerita Terbaru untuk Kamu</h3>
-    </div>
-    <div class="content row">
-      <?php
-        $data = mysqli_query($koneksi,"SELECT * FROM tb_post ORDER BY id DESC limit 6");
-        while($d = mysqli_fetch_array($data)){
-      ?>
-      <div class="col-md-2 p-md-2">
-        <div class="cover">
-          <a href="detail.php?id=<?php echo $d['id'] ?>">
-            <img src="images/<?php echo $d['photo'] ?>" alt="Kisah Anak SMK cover" height="300">
-          </a>
-        </div>
-      </div>
-      <?php
+    
+    <?php
+      if(!empty($_GET['beranda'])){ //kondisi apakan ada parameter p didalam url
+        if ($_GET['beranda'] == "profile") {
+          include "profile.php";
+        } elseif ($_GET['beranda'] == "create") {
+          include "create.php";
+        } elseif ($_GET['beranda'] == "arsip") {
+          include "arsip.php";
+        } elseif ($_GET['beranda'] == "edit") {
+          include "edit_post.php";
+        } elseif ($_GET['beranda'] == "delete") {
+          include "delete_post.php";
+        } elseif ($_GET['beranda'] == "detail") {
+          include "detail.php";
+        } elseif ($_GET['beranda'] == "add_perpus") {
+          include "tambah_perpustakaan.php";
+        } else {
+          include "perpustakaan.php";
         }
-      ?>
-      <!-- <div class="col-md-2 p-md-2">
-        <div class="cover">
-          <a href="/story/158370598">
-            <img src="images/118595048-288-k474404.jpg" alt="Kisah Anak SMK cover" height="300">
-          </a>
-        </div>
-      </div>
-      <div class="col-md-2 p-md-2">
-        <div class="cover">
-          <a href="/story/158370598">
-            <img src="images/118595048-288-k474404.jpg" alt="Kisah Anak SMK cover" height="300">
-          </a>
-        </div>
-      </div>
-      <div class="col-md-2 p-md-2">
-        <div class="cover">
-          <a href="/story/158370598">
-            <img src="images/118595048-288-k474404.jpg" alt="Kisah Anak SMK cover" height="300">
-          </a>
-        </div>
-      </div>
-      <div class="col-md-2 p-md-2">
-        <div class="cover">
-          <a href="/story/158370598">
-            <img src="images/118595048-288-k474404.jpg" alt="Kisah Anak SMK cover" height="300">
-          </a>
-        </div>
-      </div>
-      <div class="col-md-2 p-md-2">
-        <div class="cover">
-          <a href="/story/158370598">
-            <img src="images/118595048-288-k474404.jpg" alt="Kisah Anak SMK cover" height="300">
-          </a>
-        </div>
-      </div> -->
-    </div>
-  </div>
-
-  <div class="pilihan p-md-5">
-    <div class="content row">
-      <div class="col-md-4 p-md-2">
-        <div class="cover">
-          <img src="images/190494164-288-k461028.jpg" alt="Kisah Anak SMK cover" width="80%" style="border-radius:8px; box-shadow: -1px 1px 13px 3px rgba(0,0,0,0.24);-webkit-box-shadow: -1px 1px 13px 3px rgba(0,0,0,0.24);-moz-box-shadow: -1px 1px 13px 3px rgba(0,0,0,0.24);">
-        </div>
-      </div>
-      <div class="artikel col-md-8 p-md-2">
-        <div class="description">
-          <h2 class="Judul" >Behind The Wall</h2>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </p>
-         <span class="material-icons">arrow_forward_ios</span></p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-   <div class="post-popular ">
-    <div class="heading">
-      <h3>Cerita Pilihan untuk Kamu</h3>
-    </div>
-    <div class="content row">
-      <div class="col-md-2 p-md-2">
-        <div class="cover">
-          <a href="/story/158370598">
-            <img src="images/118595048-288-k474404.jpg" alt="Kisah Anak SMK cover" height="300">
-          </a>
-        </div>
-      </div>
-      <div class="col-md-2 p-md-2">
-        <div class="cover">
-          <a href="/story/158370598">
-            <img src="images/118595048-288-k474404.jpg" alt="Kisah Anak SMK cover" height="300">
-          </a>
-        </div>
-      </div>
-      <div class="col-md-2 p-md-2">
-        <div class="cover">
-          <a href="/story/158370598">
-            <img src="images/118595048-288-k474404.jpg" alt="Kisah Anak SMK cover" height="300">
-          </a>
-        </div>
-      </div>
-      <div class="col-md-2 p-md-2">
-        <div class="cover">
-          <a href="/story/158370598">
-            <img src="images/118595048-288-k474404.jpg" alt="Kisah Anak SMK cover" height="300">
-          </a>
-        </div>
-      </div>
-      <div class="col-md-2 p-md-2">
-        <div class="cover">
-          <a href="/story/158370598">
-            <img src="images/118595048-288-k474404.jpg" alt="Kisah Anak SMK cover" height="300">
-          </a>
-        </div>
-      </div>
-      <div class="col-md-2 p-md-2">
-        <div class="cover">
-          <a href="/story/158370598">
-            <img src="images/118595048-288-k474404.jpg" alt="Kisah Anak SMK cover" height="300">
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
+      } else {
+        include('home.php');
+      }
+    ?>
 
   </div>
 
-
-   
   <script type="text/javascript">
-    var myCarousel = document.querySelector('#myCarousel')
-    var carousel = new bootstrap.Carousel(myCarousel)
+    var myCarousel = document.querySelector('#myCarousel');
   </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
         crossorigin="anonymous"></script>
+
+  <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script> -->
 </body>
 </html>
