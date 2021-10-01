@@ -1,6 +1,6 @@
 <?php
-include "db/koneksi.php";
-  $data = mysqli_query($koneksi,"SELECT * FROM perpustakaan join tb_post on perpustakaan.post_id = tb_post.id ");
+  include "db/koneksi.php";
+  $data = mysqli_query($koneksi,"SELECT * FROM perpustakaan join tb_post on perpustakaan.post_id = tb_post.id WHERE perpustakaan.user_id='$_SESSION[id]'");
   while($d = mysqli_fetch_array($data)){
 ?>
 <div class="col-md-2">
@@ -14,7 +14,7 @@ include "db/koneksi.php";
           Dropdown
         </button>
         <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-          <a class="dropdown-item" href="beranda.php?beranda=edit&id=<?php echo $d['id'] ?>">Edit</a>
+          <a class="dropdown-item" href="beranda.php?beranda=edit&id=<?php echo $d['id'] ?>">Baca Sekarang</a>
           <a class="dropdown-item" href="beranda.php?beranda=delete&id=<?php echo $d['id'] ?>" onclick="return confirm('Anda yakin mau menghapus cerita ini ?')">Hapus</a>
         </div>
       </div>

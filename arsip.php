@@ -1,6 +1,6 @@
 <?php
 include "db/koneksi.php";
-  $data = mysqli_query($koneksi,"SELECT * FROM tb_post WHERE status = 'arsip' ");
+  $data = mysqli_query($koneksi,"SELECT * FROM tb_post WHERE status = 'arsip' AND user_id='$_SESSION[id]'");
   while($d = mysqli_fetch_array($data)){
 ?>
 <div class="col-md-2">

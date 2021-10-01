@@ -4,10 +4,11 @@ include "db/koneksi.php";
     $judul          = $_POST['judul'];
     $kategori       = $_POST['kategori'];
     $isi            = $_POST['isi'];
+    $user_id        = $_POST['user_id'];
     $namaFile       = $_FILES['sampul']['name'];
     $namaSementara  = $_FILES['sampul']['tmp_name'];
     move_uploaded_file($namaSementara, 'images/'.$namaFile);
-    $add = mysqli_query($koneksi, "INSERT INTO tb_post VALUES ('', '$judul', '$kategori', '$namaFile','$isi', '', 'publis', '')");
+    $add = mysqli_query($koneksi, "INSERT INTO tb_post VALUES ('', '$judul', '$kategori', '$namaFile','$isi', '', 'publis', '$user_id ')");
     if ($add) {
       echo ("<script LANGUAGE='JavaScript'>
       window.alert('Berhasil Di Publish');
@@ -19,10 +20,11 @@ include "db/koneksi.php";
     $judul          = $_POST['judul'];
     $kategori       = $_POST['kategori'];
     $isi            = $_POST['isi'];
+    $user_id        = $_POST['user_id'];
     $namaFile       = $_FILES['sampul']['name'];
     $namaSementara  = $_FILES['sampul']['tmp_name'];
     move_uploaded_file($namaSementara, 'images/'.$namaFile);
-    $add = mysqli_query($koneksi, "INSERT INTO tb_post VALUES ('', '$judul', '$kategori', '$namaFile','$isi', '', 'arsip', '')");
+    $add = mysqli_query($koneksi, "INSERT INTO tb_post VALUES ('', '$judul', '$kategori', '$namaFile','$isi', '', 'arsip', '$user_id ')");
     if ($add) {
       echo ("<script LANGUAGE='JavaScript'>
       window.alert('Berhasil Diarsipkan');
@@ -76,6 +78,7 @@ include "db/koneksi.php";
             <div class="mb-3">
               <label for="exampleFormControlInput1" class="form-label">Judul</label>
               <input type="text" class="form-control" id="exampleFormControlInput1" name="judul">
+              <input type="text" class="form-control" id="exampleFormControlInput1" name="user_id" value="<?php echo $_SESSION['id'] ?>">
             </div>
             <div class="mb-3">
               <label for="exampleFormControlInput1" class="form-label">Kategori</label>

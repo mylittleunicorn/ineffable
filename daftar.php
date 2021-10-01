@@ -1,4 +1,9 @@
 <?php
+	session_start();
+ 
+	if (isset($_SESSION['login'])) {
+	    header("Location: beranda.php");
+	}
   include "db/koneksi.php";
   if (isset($_POST["daftar"])) {
     $username = $_POST['username'];
@@ -61,7 +66,7 @@
 					</div>
 
 					<div class="input-box">
-						<p>Sudah Punya Akun? <a href="login.html">Masuk Sekarang</a></p>
+						<p>Sudah Punya Akun? <a href="login.php">Masuk Sekarang</a></p>
 					</div>
 
 				</form>

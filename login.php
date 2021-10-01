@@ -1,8 +1,34 @@
 <?php
+	include "db/koneksi.php";
+	session_start();
+ 
+	if (isset($_SESSION['login'])) {
+	    header("Location: beranda.php");
+	}
 	if(isset($_POST['login'])){
 		$email = $_POST['email'];
-		$pass  = $_POST['pass']
-		$query = 
+		$pass  = $_POST['pass'];
+		$query = mysqli_query($koneksi, "SELECT * FROM tb_user WHERE email='$email'");
+		$r = mysqli_num_rows($query);
+		if ($r > 0) {
+			while($row = mysqli_fetch_array($query)){
+				$user_id = $row['id'];
+				$user_email = $row['email'];
+				$user_pass = $row['password'];
+			}
+			if ($email == $user_email && $pass == $user_pass) {
+				$_SESSION['login'] = true;
+				$_SESSION['id'] = $user_id;
+				header('location:beranda.php');
+			}else{
+				echo "password salah";
+			}
+		}else{
+			echo "akun belum terdaftar";
+		}
+
+
+
 	}
 ?>
 <!DOCTYPE html>
@@ -24,15 +50,15 @@
 						<h2>Masuk</h2>
 					</center>
 				</div>
-				<form action="index.html">
+				<form action="" method="post">
 					<div class="input-box">
 						<span>Email</span>
-						<input type="text" name="">
+						<input type="email" name="email">
 					</div>
 
 					<div class="input-box">
 						<span>Kata sandi</span>
-						<input type="password" name="">
+						<input type="password" name="pass">
 					</div>
 
 					<div class="remember">
@@ -40,7 +66,7 @@
 					</div>
 
 					<div class="input-box">
-						<input type="submit" value="Masuk" name="">
+						<input type="submit" value="Masuk" name="login">
 					</div>
 
 					<div class="input-box">

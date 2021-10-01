@@ -1,5 +1,9 @@
 <?php
   include "db/koneksi.php";
+  session_start();
+  if (!isset($_SESSION['login'])) {
+    header('location:index.php');
+  }
 ?>
 
 <!DOCTYPE html>
@@ -9,6 +13,7 @@
   
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
   <link rel="stylesheet" type="text/css" href="style.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <style type="text/css">
@@ -115,7 +120,7 @@
   <nav class="navbar navbar-expand-md navbar-light bg-light">
     <div class="container">
       <img src="images/ine-logo.png" alt="" width="30" height="30" class="d-inline-block align-text-top">
-      <font size="5" font="center"><a href="beranda.php">Ineffable</a></font>
+      <font size="5" font="center"><a href="beranda.php" style="color: black; text-decoration: none;"><b class="ml-2">Ineffable</b> </a></font>
       <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNavbar">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -125,7 +130,7 @@
             <a class="nav-link" href="#">Jelajahi</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href=""><i class="fas fa-search"></i></a>
+            <a class="nav-link" href="beranda.php?beranda=search"><i class="fas fa-search"></i></a>
           </li>
           <li>
             <input type="text" class="form-control" placeholder="Cari ..." aria-label="Username" aria-describedby="basic-addon1" style="border: none;">
@@ -141,9 +146,23 @@
               <a href="beranda.php?beranda=profile&profile=cerita"><li class="dropdown-item">Cerita Saya</li></a>
             </ul>
           </li>
+
           <li class="nav-item dropdown">
+              <?php
+                $select_user = mysqli_query($koneksi, "SELECT * FROM tb_user WHERE id = '$_SESSION[id]' ");
+                while ($u = mysqli_fetch_array($select_user)){
+              ?>
+              <?php if (empty($u['photo'])): ?>
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <img src="images/yamato.jpg" class="profile-image rounded-circle" style="object-fit: cover 50% 50% no-repeat; width:30px; height:30px; border: 1px solid #000; margin-left: 10px;"><span class="caret" style="margin-left: 10px;">Resa Amanda</span></a>
+              <img src="images/yamato.jpg" class="profile-image rounded-circle" style="object-fit: cover 50% 50% no-repeat; width:30px; height:30px; border: 1px solid #000; margin-left: 10px;"><span class="caret" style="margin-left: 10px;"><?php echo $u['username']; ?></span></a>
+              <?php else: ?>
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="images/<?php echo $u['photo']; ?>" class="profile-image rounded-circle" style="object-fit: cover 50% 50% no-repeat; width:30px; height:30px; border: 1px solid #000; margin-left: 10px;"><span class="caret" style="margin-left: 10px;"><?php echo $u['username']; ?></span></a>
+              <?php endif ?>
+              
+              <?php
+                }
+              ?>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li class="dropdown-item"><a href="beranda.php?beranda=profile&profile=cerita"></i>Profil saya</a></li>
                   <li class="dropdown-divider"></li>
@@ -151,7 +170,7 @@
                   <li class="dropdown-item"><a href="beranda.php?beranda=profile&profile=perpustakaan">Perpustakaan</a></li>
                   <li class="dropdown-item"><a href="#">Notifikasi</a></li>
                   <li class="dropdown-divider"></li>
-                  <li class="dropdown-item"><a href="login.html"><i class="fa fa-sign-out"></i>Keluar</a></li>
+                  <li class="dropdown-item"><a href="logout.php"><i class="fa fa-sign-out"></i>Keluar</a></li>
               </ul>
           </li>
         </ul>
@@ -176,6 +195,16 @@
           include "detail.php";
         } elseif ($_GET['beranda'] == "add_perpus") {
           include "tambah_perpustakaan.php";
+        } elseif ($_GET['beranda'] == "cerpen") {
+          include "page_cerpen.php";
+        } elseif ($_GET['beranda'] == "quotes") {
+          include "page_quotes.php";
+        } elseif ($_GET['beranda'] == "novel") {
+          include "page_novel.php";
+        } elseif ($_GET['beranda'] == "puisi") {
+          include "page_puisi.php";
+        } elseif ($_GET['beranda'] == "search") {
+          include "search.php";
         } else {
           include "perpustakaan.php";
         }
