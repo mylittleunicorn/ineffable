@@ -21,10 +21,16 @@
 				$_SESSION['id'] = $user_id;
 				header('location:beranda.php');
 			}else{
-				echo "password salah";
+				echo  echo ("<SCRIPT LANGUAGE='JavaScript'>
+          window.alert('pasword salah')
+      window.location.href='login.php';
+    </SCRIPT>");
 			}
 		}else{
-			echo "akun belum terdaftar";
+			 echo ("<SCRIPT LANGUAGE='JavaScript'>
+          window.alert('Akun Belum Terdaftar, Belum Punya akun? Klik OK untuk daftar')
+      window.location.href='daftar.php';
+    </SCRIPT>");
 		}
 
 

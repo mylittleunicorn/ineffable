@@ -161,6 +161,13 @@ section .content-box .form-box .logo img{
 	height:150px;
 /*	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
 }
+.profile-image-content-2 
+{
+	object-fit: cover 50% 50% no-repeat; 
+	width:200px; 
+	height:200px;
+/*	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
+}
 .user-dropdown
 {
 	border-bottom: 5px;

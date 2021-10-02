@@ -133,7 +133,10 @@
             <a class="nav-link" href="beranda.php?beranda=search"><i class="fas fa-search"></i></a>
           </li>
           <li>
-            <input type="text" class="form-control" placeholder="Cari ..." aria-label="Username" aria-describedby="basic-addon1" style="border: none;">
+            <form action="beranda.php" method="get">
+            <input type="text" class="form-control" placeholder="Cari ..." aria-label="Username" aria-describedby="basic-addon1" style="border: none;" name="cari">
+            <input type="hidden" name="beranda" value="search_page">
+            <input type="submit" style="display:none"/>
           </li>
         </ul>
         <ul class="navbar-nav ms-auto">
@@ -203,6 +206,10 @@
           include "page_novel.php";
         } elseif ($_GET['beranda'] == "puisi") {
           include "page_puisi.php";
+        } elseif ($_GET['beranda'] == "edit_profile") {
+          include "edit_profile.php";
+        } elseif ($_GET['beranda'] == "search_page") {
+          include "search_page.php";
         } elseif ($_GET['beranda'] == "search") {
           include "search.php";
         } else {

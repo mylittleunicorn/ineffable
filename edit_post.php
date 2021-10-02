@@ -1,31 +1,42 @@
 <?php
 include "db/koneksi.php";
-  if (isset($_POST['add'])) {
+  // update jadi publis
+  if (isset($_POST['update_publis'])) {
+    $post_id        = $_POST['post_id'];
     $judul          = $_POST['judul'];
     $kategori       = $_POST['kategori'];
     $isi            = $_POST['isi'];
+    $view        = $_POST['view'];
+    $user_id        = $_POST['user_id'];
     $namaFile       = $_FILES['sampul']['name'];
     $namaSementara  = $_FILES['sampul']['tmp_name'];
     move_uploaded_file($namaSementara, 'images/'.$namaFile);
-    $add = mysqli_query($koneksi, "INSERT INTO tb_post VALUES ('', '$judul', '$kategori', '$namaFile','$isi', '', '')");
-    if ($add) {
-      echo "berhasil";
-    }else{
-      echo "gagal";
+    $update_publis = mysqli_query($koneksi, "UPDATE tb_post SET  judul='$judul', kategori='$kategori', photo='$namaFile', isi='$isi', view='$view', status='publis', user_id='$user_id' WHERE id='$post_id'");
+    if ($update_publis) {
+      echo ("<script LANGUAGE='JavaScript'>
+      window.alert('Berhasil Diubah dan Dipublis');
+      window.location.href='beranda.php?beranda=profile&profile=cerita';
+      </script>");
     }
   }
-  if (isset($_POST['arsip'])) {
+
+  // Udate menjadi arsip
+  if (isset($_POST['update_arsip'])) {
+    $post_id        = $_POST['post_id'];
     $judul          = $_POST['judul'];
     $kategori       = $_POST['kategori'];
     $isi            = $_POST['isi'];
+    $view           = $_POST['view'];
+    $user_id        = $_POST['user_id'];
     $namaFile       = $_FILES['sampul']['name'];
     $namaSementara  = $_FILES['sampul']['tmp_name'];
     move_uploaded_file($namaSementara, 'images/'.$namaFile);
-    $add = mysqli_query($koneksi, "INSERT INTO tb_post VALUES ('', '$judul', '$kategori', '$namaFile','$isi', '', '')");
+    $add = mysqli_query($koneksi, "UPDATE tb_post SET  judul='$judul', kategori='$kategori', photo='$namaFile', isi='$isi', view='$view', status='arsip',user_id='$user_id' WHERE id='$post_id'");
     if ($add) {
-      echo "berhasil";
-    }else{
-      echo "gagal";
+      echo ("<script LANGUAGE='JavaScript'>
+      window.alert('Berhasil Diubah dan Diarsipkan');
+      window.location.href='beranda.php?beranda=profile&profile=arsip';
+      </script>");
     }
   }
 ?>
@@ -78,9 +89,11 @@ include "db/koneksi.php";
             <div class="mb-3">
               <label for="exampleFormControlInput1" class="form-label">Judul</label>
               <input type="text" class="form-control" id="exampleFormControlInput1" name="judul" value="<?php echo $a['judul'] ?>">
-              <input type="hidden" class="form-control" id="exampleFormControlInput1" name="judul">
+              <input type="text" class="form-control" id="exampleFormControlInput1" name="post_id" value="<?php echo $a['id'] ?>">
+              <input type="text" class="form-control" id="exampleFormControlInput1" name="view" value="<?php echo $a['view'] ?>">
+              <input type="text" class="form-control" id="exampleFormControlInput1" name="user_id" value="<?php echo $a['user_id'] ?>">
             </div>
-            <div class="mb-3">
+            <div class="user_id">
               <label for="exampleFormControlInput1" class="form-label">Kategori</label>
               <select class="form-control" id="exampleFormControlSelect1" name="kategori">
                 <option value="Puisi" <?php if($a['kategori']=="Puisi") echo 'selected="selected"';?>>Puisi</option>
@@ -108,8 +121,8 @@ include "db/koneksi.php";
           <div class="row">
             <div class="col-md-8 pt-md-5">
               <div class="d-grid gap-5 d-md-flex justify-content-md-end">
-                <button class="btn btn-primary me-md-2" type="submit" name="add">Posting</button>
-                <button class="btn btn-primary" type="submit" name="arsip">Arsipkan</button>
+                <button class="btn btn-primary me-md-2" type="submit" name="update_publis">Posting</button>
+                <button class="btn btn-primary" type="submit" name="update_arsip">Arsipkan</button>
               </div>
             </div>
           </div>

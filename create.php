@@ -28,7 +28,7 @@ include "db/koneksi.php";
     if ($add) {
       echo ("<script LANGUAGE='JavaScript'>
       window.alert('Berhasil Diarsipkan');
-      window.location.href='beranda.php?beranda=profile&profile=cerita';
+      window.location.href='beranda.php?beranda=profile&profile=arsip';
       </script>");
     }
   }
@@ -68,9 +68,6 @@ include "db/koneksi.php";
 </head>
 
 <body>
-
-  
-
     <div class="container">
       <form action="" method="post" enctype="multipart/form-data">
         <div class="row">

@@ -31,9 +31,16 @@
 
   <div class="greeting-and-content-settings">
     <div class="module-content">
+      <?php
+      $sel = mysqli_query($koneksi, "SELECT * FROM tb_user WHERE id='$_SESSION[id]'");
+      while( $nam = mysqli_fetch_array($sel)){
+      ?>
       <div class="greeting">
-        <h2 class="greeting-text">Selamat datang, abd_dahdah!</h2>
+        <h2 class="greeting-text">Selamat datang, <?php echo $nam['username'] ?></h2>
       </div>
+      <?php 
+      }
+      ?>
     </div>
     <hr class="module-divider">
   </div>
@@ -45,7 +52,7 @@
     </div>
     <div class="content row ">
       <?php
-        $data = mysqli_query($koneksi,"SELECT * FROM tb_post ORDER BY id DESC limit 6");
+        $data = mysqli_query($koneksi,"SELECT * FROM tb_post WHERE status='publis' limit 5");
         while($d = mysqli_fetch_array($data)){
       ?>
       <div class="col-md-2 mx-md-3 datatab">
@@ -93,51 +100,51 @@
 
   <div class="post-popular ">
     <div class="heading">
-      <h3>Cerita Pilihan untuk Kamu</h3>
+      <h3>Puisi Terbaru untuk Kamu</h3>
     </div>
-    <div class="content row">
-      <div class="col-md-2 p-md-2">
+    <div class="content row ">
+      <?php
+        $data_puisi = mysqli_query($koneksi,"SELECT * FROM tb_post WHERE kategori='Puisi' limit 5");
+        while($puisi = mysqli_fetch_array($data_puisi)){
+      ?>
+      <div class="col-md-2 mx-md-3 datatab">
         <div class="cover">
-          <a href="/story/158370598">
-            <img src="images/118595048-288-k474404.jpg" alt="Kisah Anak SMK cover" height="300">
-          </a>
+            <img src="images/<?php echo $puisi['photo'] ?>" alt="<?php echo $d['judul'];?>" height="300" class="img-hover">
+            <div class="middle">
+              <a href="tambah_perpustakaan.php?id=<?php echo $puisi['id'] ?>"><div class="text">+ Ke Daftar Baca</div></a>
+              <a href="beranda.php?beranda=detail&id=<?php echo $puisi['id'] ?>"><div class="text">Baca Sekarang</div></a>
+            </div>
+
         </div>
       </div>
-      <div class="col-md-2 p-md-2">
+      <?php
+        }
+      ?>
+    </div>
+  </div>
+
+  <div class="post-popular ">
+    <div class="heading">
+      <h3>Cerpen Terbaru untuk Kamu</h3>
+    </div>
+    <div class="content row ">
+      <?php
+        $data_cerpen = mysqli_query($koneksi,"SELECT * FROM tb_post WHERE kategori='Cerpen' AND status='publis' limit 5");
+        while($cerpen = mysqli_fetch_array($data_cerpen)){
+      ?>
+      <div class="col-md-2 mx-md-3 datatab">
         <div class="cover">
-          <a href="/story/158370598">
-            <img src="images/118595048-288-k474404.jpg" alt="Kisah Anak SMK cover" height="300">
-          </a>
+            <img src="images/<?php echo $cerpen['photo'] ?>" alt="<?php echo $cerpen['judul'];?>" height="300" class="img-hover">
+            <div class="middle">
+              <a href="tambah_perpustakaan.php?id=<?php echo $cerpen['id'] ?>"><div class="text">+ Ke Daftar Baca</div></a>
+              <a href="beranda.php?beranda=detail&id=<?php echo $cerpen['id'] ?>"><div class="text">Baca Sekarang</div></a>
+            </div>
+
         </div>
       </div>
-      <div class="col-md-2 p-md-2">
-        <div class="cover">
-          <a href="/story/158370598">
-            <img src="images/118595048-288-k474404.jpg" alt="Kisah Anak SMK cover" height="300">
-          </a>
-        </div>
-      </div>
-      <div class="col-md-2 p-md-2">
-        <div class="cover">
-          <a href="/story/158370598">
-            <img src="images/118595048-288-k474404.jpg" alt="Kisah Anak SMK cover" height="300">
-          </a>
-        </div>
-      </div>
-      <div class="col-md-2 p-md-2">
-        <div class="cover">
-          <a href="/story/158370598">
-            <img src="images/118595048-288-k474404.jpg" alt="Kisah Anak SMK cover" height="300">
-          </a>
-        </div>
-      </div>
-      <div class="col-md-2 p-md-2">
-        <div class="cover">
-          <a href="/story/158370598">
-            <img src="images/118595048-288-k474404.jpg" alt="Kisah Anak SMK cover" height="300">
-          </a>
-        </div>
-      </div>
+      <?php
+        }
+      ?>
     </div>
   </div>
 

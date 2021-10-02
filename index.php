@@ -21,21 +21,21 @@
     </style>
   </head>
   <body>
-    <nav class="navbar navbar-light bg-transparent">
+    <nav class="navbar navbar-light bg-ligth">
       <div class="container">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="index.php">
           <img src="images/ine-logo.png" alt="" width="30" class="d-inline-block align-text-top mr">
           <b class="ml-2">Ineffable</b>  
         </a>
         <ul class="nav justify-content-end">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">Home</a>
+            <a class="nav-link" href="index.php">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="login.php">Login</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="daftar.html" >Daftar </a>
+            <a class="nav-link" href="daftar.php" >Daftar </a>
           </li>
         </ul>
       </div>

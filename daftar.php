@@ -14,7 +14,7 @@
     if ($daftar) {
       echo ("<SCRIPT LANGUAGE='JavaScript'>
           window.alert('Pendaftaran Berhasil, Klik OK untuk Login')
-      window.location.href='login.html';
+      window.location.href='login.php';
     </SCRIPT>");
     }else{
       echo "gagal";

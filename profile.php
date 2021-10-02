@@ -1,18 +1,49 @@
+<?php 
+  $show_user = mysqli_query($koneksi, "SELECT * FROM tb_user WHERE id='$_SESSION[id]'");
+  while ($show = mysqli_fetch_array($show_user)){
+?>
+
       <div class="sampul">
         <div class="container">
+
+          <?php if (empty($show['photo'])): ?>
           <div class=" pt-md-5 d-flex justify-content-center">
             <img src="images/yamato.jpg" class="profile-image profile-image-content rounded-circle" >
           </div>
-          <div class="pt-md-2 d-flex justify-content-center">
-            <b>Resa Amanda Rahayu</b>
+          <?php else: ?>
+            <div class=" pt-md-5 d-flex justify-content-center">
+           
+            <img src="images/<?php echo $show['photo'] ?>" class="profile-image profile-image-content rounded-circle" >
           </div>
-          <div class="pt-md-2 pb-md-5 d-flex justify-content-center">
-            @deeee_ku
+          
+          <?php endif ?>
+
+
+          <?php if (empty($show['nama'])): ?>
+          <div class="pt-md-2 d-flex justify-content-center">
+            <b>Nama Belum Di Tambahkan</b>
+          </div>
+          <?php else: ?>
+          <div class="pt-md-2 d-flex justify-content-center">
+            <b><?php echo $show['nama'] ?></b>
+          </div>
+          <?php endif ?>
+
+          <div class="pt-md-2 pb-md-3 d-flex justify-content-center">
+            @<?php echo $show['username'] ?>
+          </div>
+
+          <div class="pb-md-5 d-flex justify-content-center">
+            <a href="beranda.php?beranda=edit_profile&user_id=<?php echo $_SESSION['id']?>">
+              <button type="button" class="btn btn-secondary">Edit Profile    <i class="fas fa-edit"></i></button>
+            </a>
           </div>
          
         </div>
       </div>
-
+    <?php 
+      }
+     ?>
     <nav class="navbar navbar-light">
       <div class="container">
         <ul class="nav justify-content-start">
