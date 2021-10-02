@@ -132,12 +132,12 @@
           <li class="nav-item">
             <a class="nav-link" href="beranda.php?beranda=search"><i class="fas fa-search"></i></a>
           </li>
-          <li>
-            <form action="beranda.php" method="get">
+          <!-- <li>
+            <form action="beranda.php" method="get" class="form-inline">
             <input type="text" class="form-control" placeholder="Cari ..." aria-label="Username" aria-describedby="basic-addon1" style="border: none;" name="cari">
             <input type="hidden" name="beranda" value="search_page">
-            <input type="submit" style="display:none"/>
-          </li>
+            <input type="submit" name="nyari" class="btn btn-outline-success" />
+          </li> -->
         </ul>
         <ul class="navbar-nav ms-auto">
           <li class="nav-item dropdown">
@@ -169,9 +169,7 @@
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li class="dropdown-item"><a href="beranda.php?beranda=profile&profile=cerita"></i>Profil saya</a></li>
                   <li class="dropdown-divider"></li>
-                  <li class="dropdown-item"><a href="#">Kotak masuk</a></li>
                   <li class="dropdown-item"><a href="beranda.php?beranda=profile&profile=perpustakaan">Perpustakaan</a></li>
-                  <li class="dropdown-item"><a href="#">Notifikasi</a></li>
                   <li class="dropdown-divider"></li>
                   <li class="dropdown-item"><a href="logout.php"><i class="fa fa-sign-out"></i>Keluar</a></li>
               </ul>

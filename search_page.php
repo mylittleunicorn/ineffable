@@ -4,6 +4,9 @@
     </div>
     <div class="content row ">
       <?php
+      if (isset($_GET['nyari'])) {
+      	
+      
         $data_cerpen = mysqli_query($koneksi,"SELECT * FROM tb_post WHERE judul LiKE '%$_GET[cari]%' AND status='publis'");
         $count = mysqli_num_rows($data_cerpen);
         if ($count > 0) {
@@ -23,6 +26,7 @@
       }else{
         	echo "<h6>data yang kamu cari tidak ada</h6>";
         }
+      }
       ?>
     </div>
   </div>

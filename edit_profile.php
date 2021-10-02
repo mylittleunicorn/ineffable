@@ -21,12 +21,12 @@
 ?>
 
 <div class="container">
-	<div class="col-md-8 mx-auto d-flex justify-content-center">
+	<div class="col-md-6 mx-auto">
 		<?php 
 		$update_user = mysqli_query($koneksi, "SELECT * FROM tb_user WHERE id='$_SESSION[id]'");
 		while ($u=mysqli_fetch_array($update_user)) {
 		?>
-		<form class="mx-auto" method="post" enctype="multipart/form-data" action="">
+		<form class="col-md-8" method="post" enctype="multipart/form-data" action="">
 		<?php if (empty($u['photo'])): ?>
 			<div class="form-group d-flex justify-content-center">
         <div class=" rounded-circle">
