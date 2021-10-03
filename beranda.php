@@ -127,7 +127,7 @@
       <div class="navbar-collapse collapse" id="collapseNavbar">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="#">Jelajahi</a>
+            <a class="nav-link" href="">Jelajahi</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="beranda.php?beranda=search"><i class="fas fa-search"></i></a>
@@ -219,7 +219,13 @@
     ?>
 
   </div>
-
+  <div class="container-fluid bg-dark">
+  <footer class="footer mt-5 p-md-3">
+      <div class="container">
+        <span class="text-muted p-md-3">Place sticky footer content here.</span>
+      </div>
+    </footer>
+  </div>
   <script type="text/javascript">
     var myCarousel = document.querySelector('#myCarousel');
   </script>

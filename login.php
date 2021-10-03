@@ -21,7 +21,7 @@
 				$_SESSION['id'] = $user_id;
 				header('location:beranda.php');
 			}else{
-				echo  echo ("<SCRIPT LANGUAGE='JavaScript'>
+				echo ("<SCRIPT LANGUAGE='JavaScript'>
           window.alert('pasword salah')
       window.location.href='login.php';
     </SCRIPT>");

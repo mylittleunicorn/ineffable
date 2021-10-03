@@ -89,9 +89,9 @@ include "db/koneksi.php";
             <div class="mb-3">
               <label for="exampleFormControlInput1" class="form-label">Judul</label>
               <input type="text" class="form-control" id="exampleFormControlInput1" name="judul" value="<?php echo $a['judul'] ?>">
-              <input type="text" class="form-control" id="exampleFormControlInput1" name="post_id" value="<?php echo $a['id'] ?>">
-              <input type="text" class="form-control" id="exampleFormControlInput1" name="view" value="<?php echo $a['view'] ?>">
-              <input type="text" class="form-control" id="exampleFormControlInput1" name="user_id" value="<?php echo $a['user_id'] ?>">
+              <input type="hidden" class="form-control" id="exampleFormControlInput1" name="post_id" value="<?php echo $a['id'] ?>">
+              <input type="hidden" class="form-control" id="exampleFormControlInput1" name="view" value="<?php echo $a['view'] ?>">
+              <input type="hidden" class="form-control" id="exampleFormControlInput1" name="user_id" value="<?php echo $a['user_id'] ?>">
             </div>
             <div class="user_id">
               <label for="exampleFormControlInput1" class="form-label">Kategori</label>
